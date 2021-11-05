@@ -1,13 +1,22 @@
 import React from "react"
 import { Route } from "react-router-dom"
+import { EventList } from "./event/EventList"
+import { GameForm } from "./game/GameForm"
+import { GameList } from "./game/GameList"
 
 export const ApplicationViews = () => {
-    return <>
-        <main style={{
-            margin: "5rem 2rem",
-            backgroundColor: "lightgoldenrodyellow"
-        }}>
-            Application views
+    return (
+        <main>
+            <Route exact path="/">
+                <GameList />
+            </Route>
+            <Route exact path="/events">
+                <EventList />
+            </Route>
+            <Route exact path="/game/new">
+                <GameForm />
+            </Route>
         </main>
-    </>
+    )
+    
 }
