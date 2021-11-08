@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from "react"
-import { getEvents } from "./EventManager.js"
+import { getEvents, joinEvent } from "./EventManager.js"
 
 export const EventList = () => {
   const [events, setEvents] = useState([])
 
+  const fetchEvents = () => getEvents().then(eventsData => setEvents(eventsData))
+
   useEffect(() => {
-    getEvents().then(eventsData => setEvents(eventsData))
+    fetchEvents()
   }, [])
 
   return (
     <article>
       {
-        events.map(event => (
-          <section>
-            <p>Event Description: {event.description}</p>
-            <p>Event Date: {event.date}</p>
-            <p>Event Time: {event.time}</p>
+        events.map(event => {
+          return <section key={event.id} className="registration">
+              <div className="registration__game">{event.game.title}</div>
+              <div>{event.description}</div>
+              <div>
+                  {event.date} @ {event.time}
+              </div>
+              <button onClick={() => joinEvent(event.id).then(fetchEvents)}>Join Event</button>
+              
           </section>
-        ))
+        })
       }
     </article>
   )
