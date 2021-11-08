@@ -27,26 +27,38 @@ export const GameForm = () => {
 
   return (
     <form>
-      <label>Title</label>
-      <input type="text" name="title" onChange={(event) => handleOnChange(event)}></input>
+      <div>
+        <label>Title</label>
+        <input type="text" name="title" onChange={(event) => handleOnChange(event)}></input>
+      </div>
 
-      <label>Maker</label>
-      <input type="text" name="maker" onChange={(event) => handleOnChange(event)}></input>
+      <div>
+        <label>Maker</label>
+        <input type="text" name="maker" onChange={(event) => handleOnChange(event)}></input>
+      </div>
 
-      <label>Number of Players</label>
-      <input type="number" name="numberOfPlayers" onChange={(event) => handleOnChange(event)}></input>
+      <div>
+        <label>Number of Players</label>
+        <input type="number" name="numberOfPlayers" onChange={(event) => handleOnChange(event)}></input>
+      </div>
 
-      <label>Skill Level</label>
-      <input type="number" name="skillLevel" onChange={(event) => handleOnChange(event)}></input>
+      <div>
+        <label>Skill Level</label>
+        <input type="number" name="skillLevel" onChange={(event) => handleOnChange(event)}></input>
+      </div>
 
-      <label>Game Type</label>
-      <select name="gameTypeId" onChange={(event) => handleOnChange(event)}>
-        <option value="0">Select a game type</option>
-        {
-          gameTypes.map(type => <option value={type.id}>{type.label}</option>)
-        }
-      </select>
-      <button onClick={(event) => saveGame(event)}>Save Game</button>
+      <div>
+        <label>Game Type</label>
+        <select name="gameTypeId" onChange={(event) => handleOnChange(event)}>
+          <option value="0">Select a game type</option>
+          {
+            gameTypes.map(type => <option value={type.id}>{type.label}</option>)
+          }
+        </select>
+      </div>
+      <div>
+        <button onClick={(event) => saveGame(event)}>Save Game</button>
+      </div>
     </form>
   )
 
