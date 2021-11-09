@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { getEvents, joinEvent } from "./EventManager.js"
+import { getEvents, joinEvent, leaveEvent } from "./EventManager.js"
 
 export const EventList = () => {
   const [events, setEvents] = useState([])
@@ -20,7 +20,10 @@ export const EventList = () => {
               <div>
                   {event.date} @ {event.time}
               </div>
-              <button onClick={() => joinEvent(event.id).then(fetchEvents)}>Join Event</button>
+              {
+                event.joined ? <button onClick={() => leaveEvent(event.id).then(fetchEvents)}>Leave Event</button> :
+                <button onClick={() => joinEvent(event.id).then(fetchEvents)}>Join Event</button>
+              }
               
           </section>
         })

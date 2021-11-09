@@ -26,3 +26,12 @@ export const joinEvent = eventId => {
   })
       .then(response => response.json())
 }
+
+export const leaveEvent = eventId => {
+  return fetch(`http://localhost:8000/events/${ eventId }/signup`, {
+      method: "DELETE",
+      headers:{
+          "Authorization": `Token ${localStorage.getItem("lu_token")}`
+      }
+  })
+}
